@@ -1,0 +1,14 @@
+def findWords(self, words: List[str]) -> List[str]:
+        set1 = {"q", "w", "e", "r", "t", "y", "u", "i", "o", "p"}
+        set2 = {"a", "s", "d", "f", "g", "h", "j", "k", "l"}
+        set3 = {"z", "x", "c", "v", "b", "n", "m"}
+        ans = []
+        for i in range(len(words)):
+            word = words[i]
+            word1 = word.lower()
+            setWord = set(word1)
+            size = len(setWord)
+            totalPass = max(len(set1.intersection(setWord)),len(set2.intersection(setWord)), len(set3.intersection(setWord)))       
+            if totalPass == size:
+                ans.append(word)
+        return ans
