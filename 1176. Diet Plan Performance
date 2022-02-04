@@ -1,0 +1,28 @@
+ public int dietPlanPerformance(int[] calories, int k, int lower, int upper) {
+        int summation = 0;
+        int score = 0;
+        int length = 0;
+        int popIdx = 0;
+        for (int num: calories) {
+            summation += num;
+            length++;
+            if (length < k) {
+                continue;
+            } else if (length == k) {
+                if (summation > upper) {
+                    score++;
+                }else if (summation < lower) {
+                    score--;
+                }
+            } else {
+                summation = summation - calories[popIdx++];
+                length--;
+                if (summation > upper) {
+                    score++;
+                }else if (summation < lower) {
+                    score--;
+                }
+            }
+        }
+        return score;
+    }
