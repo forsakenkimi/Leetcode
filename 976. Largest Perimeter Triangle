@@ -1,0 +1,15 @@
+public int largestPerimeter(int[] nums) {
+        Arrays.sort(nums);
+        int ans = 0;
+        int idx = 0;
+        while (idx + 2 <= nums.length - 1) {
+            int a = nums[idx];
+            int b = nums[idx + 1];
+            int c = nums[idx + 2];
+            if (a + b > c) {
+                ans = a + b + c;
+            }
+            idx++;
+        }
+        return ans;
+    }
