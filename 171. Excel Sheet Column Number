@@ -1,0 +1,6 @@
+def titleToNumber(self, columnTitle: str) -> int:
+        ans = 0
+        print(ord("A"))
+        for char in columnTitle:
+            ans = ans * 26 + (ord(char) - 65 + 1)
+        return ans
