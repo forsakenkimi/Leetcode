@@ -1,0 +1,16 @@
+public int majorityElement(int[] nums) {
+        int counter = 1;
+        int num = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != num) {
+                counter--;
+            } else if (nums[i] == num) {
+                counter++;
+            }
+            if (counter < 0) {
+                num = nums[i];
+                counter = 1;
+            }
+        }
+        return num;
+    }
