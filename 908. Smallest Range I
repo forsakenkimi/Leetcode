@@ -1,0 +1,17 @@
+public int smallestRangeI(int[] nums, int k) {
+        int maxi = Integer.MIN_VALUE;
+        int mini = Integer.MAX_VALUE;
+        for (int num: nums) {
+            if (num > maxi) {
+                maxi = num;
+            }
+            if (num < mini) {
+                mini = num;
+            }
+        }
+        if (maxi - mini <= 2 * k) {
+            return 0;
+        } else {
+            return maxi - k - mini - k;
+        }
+    }
