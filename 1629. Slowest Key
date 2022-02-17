@@ -1,0 +1,17 @@
+ public char slowestKey(int[] releaseTimes, String keysPressed) {
+        char c = keysPressed.charAt(0);
+        int dur = releaseTimes[0];
+        for (int i = 1; i < keysPressed.length(); i++) {
+            int newDur = releaseTimes[i] - releaseTimes[i - 1];
+            if (newDur == dur) {
+                if (keysPressed.charAt(i) - c > 0) {
+                    c = keysPressed.charAt(i);
+                }
+            }else if (newDur > dur) {
+                c = keysPressed.charAt(i);
+                dur = newDur; 
+            }
+        }
+        return c;
+    }
+}
