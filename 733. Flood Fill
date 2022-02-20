@@ -1,0 +1,33 @@
+ public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        int oldColor = image[sr][sc];
+        if (oldColor == newColor) {
+            return image;
+        }
+        int width = image.length;
+        int length = image[0].length;
+        Queue<Pair<Integer, Integer>> queue = new LinkedList<>();
+        Pair<Integer, Integer> pair = new Pair(sr, sc);
+        queue.add(pair);        
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Pair<Integer, Integer> pointPair = queue.poll();
+                int point0 = pointPair.getKey();
+                int point1 = pointPair.getValue();
+                image[point0][point1] = newColor;
+                if (point0 - 1 >= 0 && image[point0 - 1][point1] == oldColor) {
+                    queue.add(new Pair(point0 - 1, point1));
+                }
+                if (point1 - 1 >= 0 && image[point0][point1 - 1] == oldColor) {
+                    queue.add(new Pair(point0, point1 - 1));
+                }
+                if (point0 + 1 < width && image[point0 + 1][point1] == oldColor) {
+                    queue.add(new Pair(point0 + 1, point1));
+                }
+                if (point1 + 1 < length && image[point0][point1 + 1] == oldColor) {
+                    queue.add(new Pair(point0, point1 + 1));
+                }
+            }
+        }
+        return image;
+    }
