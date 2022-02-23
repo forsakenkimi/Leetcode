@@ -1,0 +1,15 @@
+public int maxPower(String s) {
+        int power = 1;
+        int cur = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                cur++;
+            } else {
+                power = Math.max(power, cur);
+                cur = 1;
+            }
+        }
+        power = Math.max(power, cur);
+        return power;
+    }
+}
